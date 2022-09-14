@@ -2,7 +2,16 @@ import { Auth } from "aws-amplify";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaGem, FaHeart, FaPowerOff } from "react-icons/fa";
+import {
+FaMapMarkedAlt,FaDatabase,FaMoneyCheckAlt, FaEnvelopeOpenText, FaGem, FaHeart, FaPowerOff, FaBuffer, FaBus, FaPlus, FaClipboardList, FaFileImport,
+  FaGasPump,FaRoute,FaTicketAlt,FaUserCog,FaUserPlus,FaListAlt,FaMapMarkerAlt,FaLocationArrow,FaUser,FaTools
+} from "react-icons/fa";
+import {MdOutlineEventAvailable,MdCreate,MdPassword,MdPayments,MdOutlineAcUnit,MdSettingsApplications,MdAdminPanelSettings,MdSettingsSuggest, MdOutlineManageAccounts, MdNewLabel, MdMoneyOff,MdSend,MdNotificationAdd,MdLiveHelp,MdAlternateEmail,MdAlarmAdd,MdOutgoingMail,MdTextsms} from "react-icons/md";
+import { TbLiveView } from "react-icons/tb";
+import { FcStatistics } from "react-icons/fc";
+import { RiMailSendLine, RiFileTextFill } from "react-icons/ri";
+import { TbApi } from "react-icons/tb";
+
 import {
   ProSidebar,
   Menu,
@@ -37,7 +46,7 @@ const Sidebar = ({ sideBarCollapsed }: Props) => {
         <SidebarContent className="bg-zinc-900 scrollbar-thin scrollbar-track-gray-900 scrollbar-thumb-purple-900 hover:scrollbar-thumb-gray-700 scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
           <SidebarHeader>
             <Menu iconShape="round">
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaBuffer />}>
                 <Link href="/">Dashboard</Link>
               </MenuItem>
             </Menu>
@@ -52,15 +61,15 @@ const Sidebar = ({ sideBarCollapsed }: Props) => {
             <SubMenu
               className="text-sm"
               title="Buses"
-              icon={<FaHeart className="text-sm" />}
+              icon={<FaBus className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaPlus />}>
                 <Link href="/buses/new/">New Bus</Link>
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaClipboardList />}>
                 <Link href="/buses/">Bus List</Link>
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaFileImport />}>
                 <Link href="/buses/import/">Import Buses</Link>
               </MenuItem>
             </SubMenu>
@@ -68,12 +77,12 @@ const Sidebar = ({ sideBarCollapsed }: Props) => {
             <SubMenu
               className="text-sm"
               title="Fuel"
-              icon={<FaHeart className="text-sm" />}
+              icon={<FaGasPump className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<MdOutlineManageAccounts />}>
                 <Link href="/fuel/">Fuel Management</Link>
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaPlus />}>
                 <Link href="/fuel/">Add Fuel</Link>
               </MenuItem>
             </SubMenu>
@@ -81,15 +90,15 @@ const Sidebar = ({ sideBarCollapsed }: Props) => {
             <SubMenu
               className="text-sm"
               title="Routes"
-              icon={<FaHeart className="text-sm" />}
+              icon={<FaRoute className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<MdNewLabel />}>
                 <Link href="/routes/new">New Route</Link>
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaClipboardList />}>
                 <Link href="/routes/">Route List</Link>
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaFileImport />}>
                 <Link href="/routes/import">Import Routes</Link>
               </MenuItem>
             </SubMenu>
@@ -97,12 +106,12 @@ const Sidebar = ({ sideBarCollapsed }: Props) => {
             <SubMenu
               className="text-sm"
               title="Tickets"
-              icon={<FaHeart className="text-sm" />}
+              icon={<FaTicketAlt className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaPlus />}>
                 <Link href="/tickets/new">New Ticket</Link>
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaClipboardList />}>
                 <Link href="/tickets/history">Tickets List</Link>
               </MenuItem>
             </SubMenu>
@@ -117,18 +126,18 @@ const Sidebar = ({ sideBarCollapsed }: Props) => {
             <SubMenu
               className="text-sm"
               title="Staffs"
-              icon={<FaHeart className="text-sm" />}
+              icon={<FaUserCog className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={< FaUserPlus/>}>
                 <Link href="/staffs/newdriver">New Driver</Link>
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={< FaPlus/>}>
                 <Link href="/staffs/newconductor">New Conductor</Link>
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaClipboardList />}>
                 <Link href="/staffs/drivers">Drivers List</Link>
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaListAlt />}>
                 <Link href="/staffs/conductors">Conductors List</Link>
               </MenuItem>
             </SubMenu>
@@ -136,26 +145,25 @@ const Sidebar = ({ sideBarCollapsed }: Props) => {
             <SubMenu
               className="text-sm"
               title="Expenses"
-              icon={<FaHeart className="text-sm" />}
+              icon={<MdMoneyOff className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                New Expense
+              <MenuItem className="text-sm" icon={<FaPlus />}>
+                <Link href="/expense/newexpense">New Expense</Link> 
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Expense List
+              <MenuItem className="text-sm" icon={<FaClipboardList />}>
+                <Link href="/expense/expenselist">Expense List</Link> 
+               
               </MenuItem>
             </SubMenu>
 
             <SubMenu
               className="text-sm"
               title="Reports"
-              icon={<FaHeart className="text-sm" />}
+              icon={<FcStatistics className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                New Expense
-              </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Expense List
+              <MenuItem className="text-sm" icon={<FaClipboardList />}>
+                <Link href="/reports/allreports">All Reports</Link> 
+                
               </MenuItem>
             </SubMenu>
           </Menu>
@@ -169,41 +177,44 @@ const Sidebar = ({ sideBarCollapsed }: Props) => {
             <SubMenu
               className="text-sm"
               title="Reminder"
-              icon={<FaHeart className="text-sm" />}
+              icon={<MdNotificationAdd className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Reminder List
+              <MenuItem className="text-sm" icon={<FaPlus />}>
+                <Link href={"/reminder/newreminder"}>Add Reminder</Link>
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Add Reminder
+              <MenuItem className="text-sm" icon={<FaClipboardList />}>
+                <Link href={"/reminder/reminderlist"}>Reminder List</Link>
+               
               </MenuItem>
+            
             </SubMenu>
 
             <SubMenu
               className="text-sm"
               title="Tracking"
-              icon={<FaHeart className="text-sm" />}
+              icon={<FaLocationArrow className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Tracking History
+              <MenuItem className="text-sm" icon={<FaMapMarkerAlt />}>
+                 <Link href={"/tracking/trackingHistory"}>Tracking History</Link>
+                
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Live GPS
+              <MenuItem className="text-sm" icon={<TbLiveView />}>
+               <Link href={"/tracking/liveTracking"}>Live GPS</Link> 
               </MenuItem>
             </SubMenu>
 
             <SubMenu
               className="text-sm"
               title="Geofence"
-              icon={<FaHeart className="text-sm" />}
+              icon={<FaMapMarkedAlt className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<MdCreate />}>
                 New Geofence
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaClipboardList />}>
                 Geofence List
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<MdOutlineEventAvailable />}>
                 Geofence Events
               </MenuItem>
             </SubMenu>
@@ -218,12 +229,12 @@ const Sidebar = ({ sideBarCollapsed }: Props) => {
             <SubMenu
               className="text-sm"
               title="Users"
-              icon={<FaHeart className="text-sm" />}
+              icon={<FaUser className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaUserPlus />}>
                 <Link href="/users/new">New User</Link>
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
+              <MenuItem className="text-sm" icon={<FaListAlt />}>
                 <Link href="/users/">Users List</Link>
               </MenuItem>
             </SubMenu>
@@ -231,71 +242,71 @@ const Sidebar = ({ sideBarCollapsed }: Props) => {
             <SubMenu
               className="text-sm"
               title="Settings"
-              icon={<FaHeart className="text-sm" />}
+              icon={<FaTools className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Company Profile
+              <MenuItem className="text-sm" icon={<MdAdminPanelSettings />}>
+               <Link href={"/settings/companyPofile"}>Company Profile</Link>   
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Site Settings
+              <MenuItem className="text-sm" icon={<MdSettingsApplications />}>
+                <Link href={"/settings/siteSettings"}>Site Settings</Link>  
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Units List
+              <MenuItem className="text-sm" icon={<MdOutlineAcUnit />}>
+                <Link href={"/settings/unitsList"}>Units List</Link>  
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Payment Types List
+              <MenuItem className="text-sm" icon={<MdPayments />}>
+               <Link href={"/settings/paymentTypesList"}>Payment Types List</Link>   
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Currency List
+              <MenuItem className="text-sm" icon={<FaMoneyCheckAlt />}>
+               <Link href={"/settings/currencyList"}>Currency List</Link>   
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Change Password
+              <MenuItem className="text-sm" icon={<MdPassword />}>
+              <Link href={"/settings/changePassword"}>Change Password</Link>    
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Database Backup
+              <MenuItem className="text-sm" icon={<FaDatabase />}>
+               <Link href={"/settings/databaseBackup"}>Database Backup</Link>   
               </MenuItem>
             </SubMenu>
 
             <SubMenu
               className="text-sm"
               title="SMS"
-              icon={<FaHeart className="text-sm" />}
+              icon={<MdTextsms className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Send SMS
+              <MenuItem className="text-sm" icon={<RiMailSendLine />}>
+               <Link href={"/sms/sendSMS"}>Send SMS</Link>  
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                SMS Templates
+              <MenuItem className="text-sm" icon={<RiFileTextFill />}>
+               <Link href={"/sms/smsTemplate"}>SMS Templates</Link>  
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                SMS API
+              <MenuItem className="text-sm" icon={<TbApi />}>
+              <Link href={"/sms/smsAPI"}>SMS API</Link>   
               </MenuItem>
             </SubMenu>
 
             <SubMenu
               className="text-sm"
               title="Email"
-              icon={<FaHeart className="text-sm" />}
+              icon={<MdAlternateEmail className="text-sm" />}
             >
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Send Alert
+              <MenuItem className="text-sm" icon={<MdAlarmAdd />}>
+                 <Link href={"/email/sendAlert"}>Send Alert</Link> 
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Send Email
+              <MenuItem className="text-sm" icon={<MdSend />}>
+                <Link href={"/email/sendEmail"}>Send Email</Link> 
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Email Templates
+              <MenuItem className="text-sm" icon={<FaEnvelopeOpenText />}>
+                <Link href={"/email/emailTemplate"}>Email Templates</Link> 
               </MenuItem>
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                MAIL Settings
+              <MenuItem className="text-sm" icon={<MdSettingsSuggest />}>
+                <Link href={"/email/mailSettings"}>Mail Settings</Link> 
               </MenuItem>
             </SubMenu>
           </Menu>
 
           <SidebarFooter>
             <Menu iconShape="round">
-              <MenuItem className="text-sm" icon={<FaGem />}>
-                Help
+              <MenuItem className="text-sm" icon={<MdLiveHelp />}>
+                <Link href={"/help"}>Help</Link> 
               </MenuItem>
               <MenuItem
                 className="text-sm"
