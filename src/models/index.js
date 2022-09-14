@@ -4,8 +4,13 @@ import { schema } from './schema';
 
 
 
-const { Route } = initSchema(schema);
+const { Route, Schedule, Bus, Driver, Conductor, Ticket } = initSchema(schema);
 
 export {
-  Route
+  Route,
+  Schedule,
+  Bus,
+  Driver,
+  Conductor,
+  Ticket
 };
