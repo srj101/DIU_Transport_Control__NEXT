@@ -9,6 +9,7 @@ function Roles({ roles }: Props) {
       {roles.map((role) => (
         <p className="text-orange">{role.GroupName}</p>
       ))}
+      <p>This is p tag</p>
     </div>
   );
 }
