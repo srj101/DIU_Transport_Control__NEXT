@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        login: "url('/assets/loginbg.png')",
+        "login-bg": "url('/images/app-bg.jpg')",
       },
       spacing: {
         128: "32rem",
