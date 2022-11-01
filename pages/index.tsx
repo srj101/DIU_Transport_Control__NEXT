@@ -10,7 +10,9 @@ const Dashboard: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <h2>Dashboard</h2>
+        <div className="flex">
+          <h3>Good Morning!</h3>
+        </div>
       </Layout>
     </div>
   );
