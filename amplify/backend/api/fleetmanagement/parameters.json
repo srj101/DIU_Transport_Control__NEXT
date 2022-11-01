@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "fleetmanagement",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authfleetmanagement8cc0f23a8cc0f23a",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2022-09-20T13:33:11.248Z"
+}

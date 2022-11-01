@@ -29,3 +29,7 @@ export type Role = {
   GroupName: string;
   Description: string;
 };
+
+export type userGroupUpdateInput = {
+  userName: string;
+}

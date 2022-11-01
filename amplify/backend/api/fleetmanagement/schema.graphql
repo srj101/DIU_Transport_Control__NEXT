@@ -1,0 +1,97 @@
+type Schedule @model @auth(rules: [{allow: groups, groups: ["Admins"], operations: [read, create, update, delete]}, {allow: private, operations: [read]}]) {
+  id: ID!
+  name: String
+  time: String
+  type: String
+  day: String
+  buss: [Bus] @manyToMany(relationName: "ScheduleBus")
+  drivers: [Driver] @manyToMany(relationName: "DriverSchedule")
+  conductors: [Conductor] @manyToMany(relationName: "ConductorSchedule")
+}
+
+type Bus @model @auth(rules: [{allow: groups, groups: ["Admins"], operations: [read, create, update, delete]}, {allow: private, operations: [read]}]) {
+  id: ID!
+  name: String!
+  trackingID: String
+  Driver: Driver @hasOne
+  Conductor: Conductor @hasOne
+  BusImages: [BusImage] @hasMany
+  status_on: Boolean
+  TicketSales: [TicketSale] @hasMany
+  Schedules: [Schedule] @manyToMany(relationName: "ScheduleBus")
+  routeID: ID!
+  routes: [Route] @manyToMany(relationName: "RouteBus")
+  Tickets: [Ticket] @hasMany
+}
+
+type Route @model @auth(rules: [{allow: groups, groups: ["Admins"], operations: [read, create, update, delete]}, {allow: private, operations: [read]}]) {
+  id: ID!
+  routeName: String!
+  pickupPoints: [String]
+  image: String
+  RouteImages: [RouteImage] @hasMany
+  Buses: [Bus] @manyToMany(relationName: "RouteBus")
+  TicketSales: [TicketSale] @hasMany
+  distance: Float
+  avg_duration: Float
+}
+
+type RouteImage @model @auth(rules: [{allow: groups, groups: ["Admins"], operations: [read, create, update, delete]}, {allow: private, operations: [read]}]) {
+  id: ID!
+  url: String
+  tags: String
+  caption: String
+  routeID: ID!
+  Route: Route @belongsTo
+}
+
+type BusImage @model @auth(rules: [{allow: groups, groups: ["Admins"], operations: [read, create, update, delete]}, {allow: private, operations: [read]}]) {
+  id: ID!
+  tags: [String]
+  caption: String
+  url: String
+  busID: ID!
+  Bus: Bus @belongsTo
+}
+
+type Driver @model @auth(rules: [{allow: groups, groups: ["Admins"], operations: [read, create, update, delete]}, {allow: private, operations: [read]}]) {
+  id: ID!
+  name: String!
+  licenseNumber: String!
+  phone: String!
+  licenseExpiry: AWSDate
+  Bus: Bus @belongsTo
+  Schedules: [Schedule] @manyToMany(relationName: "DriverSchedule")
+}
+
+type Conductor @model @auth(rules: [{allow: groups, groups: ["Admins"], operations: [read, create, update, delete]}, {allow: private, operations: [read]}]) {
+  id: ID!
+  name: String!
+  phone: String!
+  Bus: Bus @belongsTo
+  Schedules: [Schedule] @manyToMany(relationName: "ConductorSchedule")
+}
+
+type TicketSale @model @auth(rules: [{allow: groups, groups: ["Admins"], operations: [read, create, update, delete]}, {allow: groups, groups: ["TicketChecker"], operations: [read, update]}, {allow: private, operations: [read]}]) {
+  id: ID!
+  expired: Boolean
+  token: String!
+  userID: String!
+  busID: ID!
+  routeID: ID!
+  Route: Route @belongsTo
+  Bus: Bus @belongsTo
+  price: Float!
+  name: String!
+  paymentVia: String
+  TicketID: String!
+}
+
+type Ticket @model @auth(rules: [{allow: groups, groups: ["Admins"], operations: [read, create, update, delete]}, {allow: private, operations: [read]}]) {
+  id: ID!
+  busID: ID!
+  Bus: Bus @belongsTo
+  price: Float!
+  name: String!
+}
+ 
