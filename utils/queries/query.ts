@@ -1,5 +1,4 @@
 import { API, Auth } from "aws-amplify";
-import { CreateUser } from "../../types/types";
 
 export async function listUsers(token?: any, limit?: Number) {
   let apiName = "AdminQueries";
@@ -23,22 +22,29 @@ export async function listUsers(token?: any, limit?: Number) {
   return data;
 }
 
-export async function createUser(values: CreateUser) {
+export async function listGroups(token?: any, limit?: Number) {
   let apiName = "AdminQueries";
-  let path = "/CreateUser";
+  let path = "/listGroups";
   let myInit = {
-    body: values,
+    queryStringParameters: {
+      limit: limit,
+      token: token,
+    },
     headers: {
       "Content-Type": "application/json",
-      Authorization: `${(await Auth.currentSession())
+      Authorization: `Bearer ${(await Auth.currentSession())
         .getAccessToken()
         .getJwtToken()}`,
     },
   };
 
-  const data = await API.post(apiName, path, myInit);
+  const data = await API.get(apiName, path, myInit);
+
+  console.log(data);
   return data;
-}
+};
+
+
 
 export async function listGroupsForUser(username: any) {
   let apiName = "AdminQueries";
@@ -57,4 +63,25 @@ export async function listGroupsForUser(username: any) {
 
   const data = await API.get(apiName, path, myInit);
   return data;
-}
+};
+
+
+export async function getUser(username: any) {
+  let apiName = "AdminQueries";
+  let path = "/getUser";
+  let myInit = {
+    queryStringParameters: {
+      username,
+    },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${(await Auth.currentSession())
+        .getAccessToken()
+        .getJwtToken()}`,
+    },
+  };
+
+  const data = await API.get(apiName, path, myInit);
+  return data;
+};
+
