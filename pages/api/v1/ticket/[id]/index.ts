@@ -1,11 +1,10 @@
-import { listSchedules } from "../../../../src/graphql/queries";
 import type { NextApiRequest, NextApiResponse } from "next";
-
 import { withSSRContext } from "aws-amplify";
-import { ListSchedulesQuery } from "../../../../src/API";
+import { listTickets } from "../../../../../src/graphql/queries";
+import { ListTicketsQuery } from "../../../../../src/API";
 
 type ResponseData = {
-	data?: ListSchedulesQuery;
+	data?: ListTicketsQuery;
 	error?: any;
 };
 
@@ -16,12 +15,12 @@ export default async function ListSchedule(
 	const { Auth, API } = withSSRContext({ req });
 	try {
 		const { data } = (await API.graphql({
-			query: listSchedules,
+			query: listTickets,
 
 			authMode: "AMAZON_COGNITO_USER_POOLS",
-		})) as { data: ListSchedulesQuery; errors: any[] };
+		})) as { data: ListTicketsQuery; errors: any[] };
 
-		console.log(data.listSchedules);
+		console.log(data.listTickets);
 		res.status(200).json({ data });
 	} catch (error) {
 		console.log(error);

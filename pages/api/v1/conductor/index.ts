@@ -1,27 +1,26 @@
-import { listSchedules } from "../../../../src/graphql/queries";
+import { listConductors } from "../../../../src/graphql/queries";
 import type { NextApiRequest, NextApiResponse } from "next";
-
 import { withSSRContext } from "aws-amplify";
-import { ListSchedulesQuery } from "../../../../src/API";
+import { ListConductorsQuery } from "../../../../src/API";
 
 type ResponseData = {
-	data?: ListSchedulesQuery;
+	data?: ListConductorsQuery;
 	error?: any;
 };
 
-export default async function ListSchedule(
+export default async function ListConductor(
 	req: NextApiRequest,
 	res: NextApiResponse<ResponseData>
 ) {
 	const { Auth, API } = withSSRContext({ req });
 	try {
 		const { data } = (await API.graphql({
-			query: listSchedules,
+			query: listConductors,
 
 			authMode: "AMAZON_COGNITO_USER_POOLS",
-		})) as { data: ListSchedulesQuery; errors: any[] };
+		})) as { data: ListConductorsQuery; errors: any[] };
 
-		console.log(data.listSchedules);
+		console.log(data.listConductors);
 		res.status(200).json({ data });
 	} catch (error) {
 		console.log(error);
