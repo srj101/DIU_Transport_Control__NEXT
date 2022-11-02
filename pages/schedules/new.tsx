@@ -6,7 +6,7 @@ const NewBus = () => {
 		<>
 			<MainLayout>
 				<div className='d-flex flex-column justify-center w-100 h-100'>
-					<div className=''>Create New Bus</div>
+					<div className=''>Create Schedule Bus</div>
 				</div>
 			</MainLayout>
 		</>

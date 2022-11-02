@@ -9,15 +9,15 @@ import LoginLayout from "../components/Layout/LoginLayout";
 Amplify.configure({ ...awsExports, ssr: true });
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <LoginLayout>
-      <>
-        <Authenticator hideSignUp className="h-screen antialiased ">
-          <Component {...pageProps} />
-        </Authenticator>
-      </>
-    </LoginLayout>
-  );
+	return (
+		<LoginLayout>
+			<>
+				<Authenticator hideSignUp className='h-screen antialiased '>
+					<Component {...pageProps} />
+				</Authenticator>
+			</>
+		</LoginLayout>
+	);
 }
 
 export default MyApp;
