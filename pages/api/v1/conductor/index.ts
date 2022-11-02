@@ -16,7 +16,6 @@ export default async function ListConductor(
 	try {
 		const { data } = (await API.graphql({
 			query: listConductors,
-
 			authMode: "AMAZON_COGNITO_USER_POOLS",
 		})) as { data: ListConductorsQuery; errors: any[] };
 
