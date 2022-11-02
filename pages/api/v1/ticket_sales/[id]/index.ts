@@ -1,29 +1,25 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-
 import { withSSRContext } from "aws-amplify";
-
-import { UpdateConductorMutation } from "../../../../../src/API";
-import { updateConductor } from "../../../../../src/graphql/mutations";
+import { getTicket } from "../../../../../src/graphql/queries";
+import { GetTicketQuery } from "../../../../../src/API";
 
 type ResponseData = {
-	data?: UpdateConductorMutation;
+	data?: GetTicketQuery;
 	error?: any;
 };
 
-export default async function updateConductorByID(
+export default async function getTicketInfo(
 	req: NextApiRequest,
 	res: NextApiResponse<ResponseData>
 ) {
 	const { Auth, API } = withSSRContext({ req });
-
 	try {
 		const { data } = (await API.graphql({
-			query: updateConductor,
-			variables: req.body,
+			query: getTicket,
+			variables: { id: req.query.id },
 			authMode: "AMAZON_COGNITO_USER_POOLS",
-		})) as { data: UpdateConductorMutation; errors: any[] };
+		})) as { data: GetTicketQuery; errors: any[] };
 
-		console.log(data.updateConductor);
 		res.status(200).json({ data });
 	} catch (error) {
 		console.log(error);

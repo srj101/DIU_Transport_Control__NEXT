@@ -21,7 +21,6 @@ export default async function ListSchedule(
 			authMode: "AMAZON_COGNITO_USER_POOLS",
 		})) as { data: ListSchedulesQuery; errors: any[] };
 
-		console.log(data.listSchedules);
 		res.status(200).json({ data });
 	} catch (error) {
 		console.log(error);
