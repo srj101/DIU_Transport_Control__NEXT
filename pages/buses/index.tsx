@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
 	DataGrid,
 	GridActionsCellItem,
+	GridColumns,
 	GridRenderCellParams,
 	GridToolbar,
 } from "@mui/x-data-grid";
@@ -17,6 +18,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
+import { json } from "stream/consumers";
 
 export default function Buses({ buses }: { buses: Array<Bus> }) {
 	const [open, setOpen] = useState(false);
@@ -55,14 +57,21 @@ export default function Buses({ buses }: { buses: Array<Bus> }) {
 			},
 			{
 				field: "busDriverId",
-				headerName: "BusDriverID",
+				headerName: "Driver",
 				width: 200,
+
+				renderCell: (params: GridRenderCellParams<Bus>) => (
+					<strong>{params.row.Driver.name}</strong>
+				),
 			},
 
 			{
 				field: "busConductorId",
-				headerName: "BusConductorID",
+				headerName: "Conductor",
 				width: 200,
+				renderCell: (params: GridRenderCellParams<Bus>) => (
+					<strong>{params.row.Conductor.name}</strong>
+				),
 			},
 			{
 				field: "actions",
