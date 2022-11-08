@@ -15,13 +15,19 @@ const FitnessDetails = () => {
 		setIsModalOpen(false);
 	};
 	return (
-		<div>
-			<div className='flex-1'>
-				<Progress type='circle' percent={75} />
-				<button onClick={showModal}>Fitness Details</button>
+		<div className='text-center'>
+			<div className='flex flex-col py-4'>
+				<div>
+					<Progress type='circle' percent={75} />
+				</div>
+				<div className=''>
+					<button style={{ color: "green" }} onClick={showModal}>
+						Score
+					</button>
+				</div>
 			</div>
 			<Modal
-				title='Fitness Details'
+				title='Score'
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}
@@ -38,7 +44,7 @@ const FitnessDetails = () => {
 					/>{" "}
 				</p>
 				<p>
-					Weel
+					Wheel
 					<Progress
 						strokeColor={{
 							from: "#FF0000",

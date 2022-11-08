@@ -21,8 +21,8 @@ const BusPage = () => {
 	const { id } = router.query;
 	return (
 		<MainLayout>
-			<div className={"flex flex-nowrap justify-between"}>
-				<div>
+			<div className={"flex justify-between"}>
+				<div className='basis-9/12'>
 					<BusLeftContent />
 				</div>
 				<div>

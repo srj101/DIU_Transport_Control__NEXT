@@ -216,7 +216,7 @@ const Sidebar = ({ sideBarCollapsed }: Props) => {
 							icon={<FcStatistics className='text-sm' />}
 						>
 							<MenuItem className='text-sm' icon={<FaClipboardList />}>
-								<Link href='/reports/allreports'>All Reports</Link>
+								<Link href='/reports/student'>Student Statistics</Link>
 							</MenuItem>
 						</SubMenu>
 					</Menu>
