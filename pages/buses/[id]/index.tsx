@@ -1,13 +1,34 @@
 import { useRouter } from "next/router";
 import React from "react";
 import MainLayout from "../../../components/Layout/MainLayout";
+import dynamic from "next/dynamic";
 
+const BusLeftContent = dynamic(
+	() => import("../../../components/BusDetails/BusLeftContent.component"),
+	{
+		ssr: false,
+	}
+);
+
+const BusRightContent = dynamic(
+	() => import("../../../components/BusDetails/BusRightContent.component"),
+	{
+		ssr: false,
+	}
+);
 const BusPage = () => {
 	const router = useRouter();
 	const { id } = router.query;
 	return (
 		<MainLayout>
-			<h1>BusPage {id}</h1>
+			<div className={"flex justify-between"}>
+				<div className='basis-9/12'>
+					<BusLeftContent />
+				</div>
+				<div>
+					<BusRightContent />
+				</div>
+			</div>
 		</MainLayout>
 	);
 };
