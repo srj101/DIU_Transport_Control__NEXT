@@ -68,9 +68,9 @@ type Props = {
 };
 const Sidebar = ({ sideBarCollapsed }: Props) => {
 	return (
-		<div className='h-screen'>
+		<div className='relative'>
 			<ProSidebar collapsed={sideBarCollapsed}>
-				<div className=' h-10 py-2 border-b  border-purple-500 '>
+				<div className=' h-10 py-2 border-b  border-purple-500 w-full sticky'>
 					{/* Logo */}
 					<div className='flex justify-center items-center'>
 						<Link href='/' className='cursor-pointer'>

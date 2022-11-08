@@ -1,6 +1,11 @@
 import Head from "next/head";
 import Layout from "../components/Layout/MainLayout";
 import type { NextPage } from "next";
+import HeadingComponent from "../components/Header/HeadingComponent";
+import RightSideBar from "../components/SideBar/RightSideBar";
+import RouteStatistics from "../components/Statistics/RouteStatistics";
+import TransportMeta from "../components/Statistics/TransportMeta";
+import BusStatistics from "../components/Statistics/BusStatistics";
 
 const Dashboard: NextPage = () => {
 	return (
