@@ -33,7 +33,7 @@ const SingleBusRight = () => {
           <h2 className="text-2xl font-bold">Contactor Information</h2>
           <div className="avatar">
             <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mx-auto my-6">
-              {/* Set driver img here  */}
+              {/* Set contactor img here  */}
               <img src="https://placeimg.com/192/192/people" />
             </div>
           </div>
