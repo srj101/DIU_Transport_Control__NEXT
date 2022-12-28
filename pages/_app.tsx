@@ -12,13 +12,13 @@ Amplify.configure({ ...awsExports, ssr: true });
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
-		<LoginLayout>
+	
 			<>
-				<Authenticator hideSignUp className='h-screen antialiased '>
+				{/* <Authenticator hideSignUp className='h-screen antialiased '> */}
 					<Component {...pageProps} />
-				</Authenticator>
+				{/* </Authenticator> */}
 			</>
-		</LoginLayout>
+		
 	);
 }
 
